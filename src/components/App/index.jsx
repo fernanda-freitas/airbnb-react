@@ -2,8 +2,13 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import './App.scss';
 import Flat from '../Flat'
+import ReactMapboxGl from 'react-mapbox-gl'
 
 const API_URL = 'https://raw.githubusercontent.com/lewagon/flats-boilerplate/master/flats.json'
+
+const Map = ReactMapboxGl({
+  accessToken: 'pk.eyJ1IjoiaWRlYWZlcm5hbmRhIiwiYSI6ImNsOXdxaHd4MjAzYnUzdHBrMjdmOTZhbjIifQ.iALVmX02XPRfKz0XYw44kw'
+})
 
 const App = () => {
   // useState to feed the flat's array with the response of the Fetch Api and iterate over it
@@ -12,9 +17,10 @@ const App = () => {
   // useEffect to Fetch only once (empty dependencies run once)
   useEffect(() => {
     fetch(API_URL)
-      .then(response => response.json()
-      .then(data => setFlats(data)))
+    .then(response => response.json()
+    .then(data => setFlats(data)))
   }, [])
+
 
   return (
     <div className='app'>
@@ -26,7 +32,13 @@ const App = () => {
           })}
         </div>
       </div>
-      <div className='map'></div>
+      <div className='map'>
+      <Map
+        zoom={[14]}
+        center={[2.3522, 48.8566]}
+        containerStyle={{ height: '100vh', width: '100%' }}
+        style="mapbox://styles/mapbox/streets-v8" />
+      </div>
     </div>
   );
 }
