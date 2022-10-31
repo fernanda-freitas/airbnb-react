@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import './App.scss';
 import Flat from '../Flat'
+import FlatMarker from '../FlatMarker'
 import ReactMapboxGl from 'react-mapbox-gl'
 
 const API_URL = 'https://raw.githubusercontent.com/lewagon/flats-boilerplate/master/flats.json'
@@ -21,7 +22,6 @@ const App = () => {
     .then(data => setFlats(data)))
   }, [])
 
-
   return (
     <div className='app'>
       <div className='main'>
@@ -33,11 +33,17 @@ const App = () => {
         </div>
       </div>
       <div className='map'>
-      <Map
-        zoom={[14]}
-        center={[2.3522, 48.8566]}
-        containerStyle={{ height: '100vh', width: '100%' }}
-        style="mapbox://styles/mapbox/streets-v8" />
+        <Map
+          zoom={[14]}
+          center={[2.3522, 48.8566]}
+          containerStyle={{ height: '100vh', width: '100%' }}
+          style="mapbox://styles/mapbox/streets-v8" >
+          {flats.map((flat) => {
+            return (
+              <FlatMarker key={flat.id} lng={flat.lng} lat={flat.lat}/>
+              )
+            })}
+        </Map>
       </div>
     </div>
   );
