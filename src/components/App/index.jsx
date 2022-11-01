@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import './App.scss';
 import Flat from '../Flat'
-import Map, {Marker} from 'react-map-gl';
+import Map, {Marker, NavigationControl} from 'react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
 const API_URL = 'https://raw.githubusercontent.com/lewagon/flats-boilerplate/master/flats.json'
@@ -40,17 +40,18 @@ const App = () => {
           {...viewState}
           onMove={event => setViewState(event.viewState)}
           style={{width: '100%', height: '100vh'}}
-          mapStyle="mapbox://styles/mapbox/streets-v9"
+          mapStyle="mapbox://styles/mapbox/light-v10"
           mapboxAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}>
           {flats.map((flat) => {
             return (
               <Marker
                 longitude={flat.lng}
                 latitude={flat.lat}>
-                <h3>You are here</h3>
+                <span class="marker">€{flat.price}</span>
               </Marker>
             )
           })}
+          <NavigationControl />
         </Map>
       </div>
     </div>
