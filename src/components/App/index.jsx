@@ -5,6 +5,7 @@ import Flat from '../Flat'
 import Map, {Marker, NavigationControl} from 'react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import Search from '../Search'
+import Pluralize from 'react-pluralize'
 
 const API_URL = 'https://raw.githubusercontent.com/lewagon/flats-boilerplate/master/flats.json'
 
@@ -37,7 +38,7 @@ const App = () => {
     <div className='app'>
       <div className='main'>
         <Search onSearch={handleSearch} />
-
+        <Pluralize className='flats-available' singular={'Flat'} count={flats.length} />
         <div className='flats'>
           {filteredFlats.map((flat) => {
             return <Flat key={flat.id} name={flat.name} price={flat.price} imageUrl={flat.imageUrl} />
