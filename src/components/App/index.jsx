@@ -2,14 +2,10 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import './App.scss';
 import Flat from '../Flat'
-import FlatMarker from '../FlatMarker'
-import ReactMapboxGl from 'react-mapbox-gl'
+import Map, {Marker} from 'react-map-gl';
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 const API_URL = 'https://raw.githubusercontent.com/lewagon/flats-boilerplate/master/flats.json'
-
-const Map = ReactMapboxGl({
-  accessToken: 'pk.eyJ1IjoiaWRlYWZlcm5hbmRhIiwiYSI6ImNsOXdxaHd4MjAzYnUzdHBrMjdmOTZhbjIifQ.iALVmX02XPRfKz0XYw44kw'
-})
 
 const App = () => {
   // useState to feed the flat's array with the response of the Fetch Api and iterate over it
@@ -21,6 +17,13 @@ const App = () => {
     .then(response => response.json()
     .then(data => setFlats(data)))
   }, [])
+
+  // useState to define the map viewport and props
+  const [viewState, setViewState] = useState({
+    latitude: 48.8566,
+    longitude: 2.3522,
+    zoom: 12
+  });
 
   return (
     <div className='app'>
@@ -34,15 +37,20 @@ const App = () => {
       </div>
       <div className='map'>
         <Map
-          zoom={[14]}
-          center={[2.3522, 48.8566]}
-          containerStyle={{ height: '100vh', width: '100%' }}
-          style="mapbox://styles/mapbox/streets-v8" >
+          {...viewState}
+          onMove={event => setViewState(event.viewState)}
+          style={{width: '100%', height: '100vh'}}
+          mapStyle="mapbox://styles/mapbox/streets-v9"
+          mapboxAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}>
           {flats.map((flat) => {
             return (
-              <FlatMarker key={flat.id} lng={flat.lng} lat={flat.lat}/>
-              )
-            })}
+              <Marker
+                longitude={flat.lng}
+                latitude={flat.lat}>
+                <h3>You are here</h3>
+              </Marker>
+            )
+          })}
         </Map>
       </div>
     </div>
