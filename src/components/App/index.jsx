@@ -4,12 +4,14 @@ import './App.scss';
 import Flat from '../Flat'
 import Map, {Marker, NavigationControl} from 'react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
+import Search from '../Search'
 
 const API_URL = 'https://raw.githubusercontent.com/lewagon/flats-boilerplate/master/flats.json'
 
 const App = () => {
   // useState to feed the flat's array with the response of the Fetch Api and iterate over it
   const [flats, setFlats] = useState([])
+  const [searchText, setSearchText] = useState('')
 
   // useEffect to Fetch only once (empty dependencies run once)
   useEffect(() => {
@@ -25,12 +27,19 @@ const App = () => {
     zoom: 14
   });
 
+  const handleSearch = (text) => {
+    setSearchText(text)
+  }
+
+  const filteredFlats = flats.filter(flat => flat.name.match(new RegExp(searchText, 'i')))
+
   return (
     <div className='app'>
       <div className='main'>
-        <input className='search' type="text" />
+        <Search onSearch={handleSearch} />
+
         <div className='flats'>
-          {flats.map((flat) => {
+          {filteredFlats.map((flat) => {
             return <Flat key={flat.id} name={flat.name} price={flat.price} imageUrl={flat.imageUrl} />
           })}
         </div>
@@ -45,9 +54,10 @@ const App = () => {
           {flats.map((flat) => {
             return (
               <Marker
+                key={flat.id}
                 longitude={flat.lng}
                 latitude={flat.lat}>
-                <span class="marker">€{flat.price}</span>
+                <span className="marker">€{flat.price}</span>
               </Marker>
             )
           })}
