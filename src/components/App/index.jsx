@@ -20,9 +20,9 @@ const App = () => {
 
   // useState to define the map viewport and props
   const [viewState, setViewState] = useState({
-    latitude: 48.8566,
-    longitude: 2.3522,
-    zoom: 12
+    latitude: 48.884211,
+    longitude: 2.34689,
+    zoom: 14
   });
 
   return (
