@@ -1,23 +1,7 @@
-.app {
+.flats {
   display: flex;
-
-  .main {
-    display: flex;
-    flex-basis: 90%;
-    flex-direction: column;
-  }
-  .map {
-    flex-grow: 1;
-    height: 100vh;
-    width: 100%;
-    top: 0;
-    position: sticky;
-  }
-  .flats {
-    display: flex;
-    flex-wrap: wrap;
-    align-content: flex-start;
-  }
+  flex-wrap: wrap;
+  align-content: flex-start;
 }
 
 .marker {

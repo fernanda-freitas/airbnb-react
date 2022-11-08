@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import './App.scss';
 import Flat from '../Flat'
 import Map, {Marker, NavigationControl} from 'react-map-gl';
@@ -35,8 +34,8 @@ const App = () => {
   const filteredFlats = flats.filter(flat => flat.name.match(new RegExp(searchText, 'i')))
 
   return (
-    <div className='app'>
-      <div className='main'>
+    <div className='app d-flex row'>
+      <div className='main col-md-5'>
         <Search onSearch={handleSearch} />
         <Pluralize className='flats-available' singular={'Flat'} count={flats.length} />
         <div className='flats'>
@@ -45,7 +44,7 @@ const App = () => {
           })}
         </div>
       </div>
-      <div className='map'>
+      <div className='map col-md-7'>
         <Map
           {...viewState}
           onMove={event => setViewState(event.viewState)}
