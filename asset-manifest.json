@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/airbnb-react/static/css/main.87874d16.css",
-    "main.js": "/airbnb-react/static/js/main.651359c6.js",
+    "main.css": "/airbnb-react/static/css/main.04d2ede1.css",
+    "main.js": "/airbnb-react/static/js/main.4f76c703.js",
     "static/js/483.83b8e339.chunk.js": "/airbnb-react/static/js/483.83b8e339.chunk.js",
     "index.html": "/airbnb-react/index.html",
-    "main.87874d16.css.map": "/airbnb-react/static/css/main.87874d16.css.map",
-    "main.651359c6.js.map": "/airbnb-react/static/js/main.651359c6.js.map",
+    "main.04d2ede1.css.map": "/airbnb-react/static/css/main.04d2ede1.css.map",
+    "main.4f76c703.js.map": "/airbnb-react/static/js/main.4f76c703.js.map",
     "483.83b8e339.chunk.js.map": "/airbnb-react/static/js/483.83b8e339.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.87874d16.css",
-    "static/js/main.651359c6.js"
+    "static/css/main.04d2ede1.css",
+    "static/js/main.4f76c703.js"
   ]
 }
