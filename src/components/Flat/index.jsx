@@ -2,7 +2,13 @@ import './Flat.scss';
 
 import { useState } from 'react';
 
-const Flat = ( {price, name, imageUrl, onSelection} ) => {
+const Flat = ( {price, name, imageUrl} ) => {
+
+  const [selected, setSelected] = useState(false)
+
+  const handleClick = () => {
+    setSelected(!selected)
+  }
 
   return (
     <div onClick={handleClick} className={selected ? 'flat selected' : 'flat'}>

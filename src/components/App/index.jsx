@@ -11,7 +11,6 @@ const API_URL = 'https://raw.githubusercontent.com/lewagon/flats-boilerplate/mas
 const App = () => {
   const [flats, setFlats] = useState([])
   const [searchText, setSearchText] = useState('')
-  const [selected, setSelected] = useState(false)
 
   useEffect(() => {
     fetch(API_URL)
@@ -31,10 +30,6 @@ const App = () => {
 
   const filteredFlats = flats.filter(flat => flat.name.match(new RegExp(searchText, 'i')))
 
-  const handleFlatSelection = () => {
-    setSelected(true)
-  }
-
   return (
     <div className='app d-flex row'>
       <div className='main col-md-5'>
@@ -42,7 +37,7 @@ const App = () => {
         <Pluralize className='flats-available' singular={'Flat'} count={flats.length} />
         <div className='flats'>
           {filteredFlats.map((flat) => {
-            return <Flat onSelection={handleFlatSelection} key={flat.id} name={flat.name} price={flat.price} imageUrl={flat.imageUrl} />
+            return <Flat key={flat.id} name={flat.name} price={flat.price} imageUrl={flat.imageUrl} />
           })}
         </div>
       </div>
