@@ -36,7 +36,7 @@ const App = () => {
   return (
     <div className='app d-flex row'>
       <div className='main col-md-5'>
-        <Search onSearch={handleSearch} />
+        <Search onChange={handleSearch} />
         <Pluralize className='flats-available' singular={'Flat'} count={flats.length} />
         <div className='flats'>
           {filteredFlats.map((flat) => {
