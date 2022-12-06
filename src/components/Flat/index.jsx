@@ -17,7 +17,7 @@ const Flat = ( {price, name, imageUrl} ) => {
         <span>{name}</span>
       </div>
       <div  className='flat-price' >
-        <span className='price'>€ {price}</span>
+        <span  className='price'>€ {price}</span>
         <span>noite</span>
       </div>
     </div>
