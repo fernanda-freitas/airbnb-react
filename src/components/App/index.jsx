@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
 import './App.scss';
-import Flat from '../Flat'
-import Map, {Marker, NavigationControl} from 'react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
+import Flat from '../Flat'
+import { useState, useEffect } from 'react';
+import Map, {Marker, NavigationControl} from 'react-map-gl';
 import Search from '../Search'
 import Pluralize from 'react-pluralize'
 

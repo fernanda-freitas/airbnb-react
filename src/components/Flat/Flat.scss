@@ -12,23 +12,37 @@
     background-position: center;
   }
 
-    .flat-title {
-      margin-top: 10px;
+  .flat-title {
+    margin-top: 10px;
 
-      span {
-        font-weight: 600;
-      }
+    span {
+      font-weight: 600;
     }
-
-    .flat-price {
-      display: flex;
-      align-items: center;
-      margin-top: .5rem;
-
-      .price {
-        font-weight: 600;
-        margin-right: .3rem;
-      }
-    }
-
   }
+
+  .flat-price {
+    display: flex;
+    align-items: center;
+    margin-top: .5rem;
+
+    .price {
+      font-weight: 600;
+      margin-right: .3rem;
+    }
+  }
+
+  &:hover {
+    cursor: pointer;
+    background-color: #eee;
+    img {
+      opacity: .8;
+    }
+  }
+
+  &.selected {
+    background-color: greenyellow;
+    img {
+      opacity: .8;
+    }
+  }
+}
