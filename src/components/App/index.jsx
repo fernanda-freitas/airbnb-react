@@ -9,18 +9,15 @@ import Pluralize from 'react-pluralize'
 const API_URL = 'https://raw.githubusercontent.com/lewagon/flats-boilerplate/master/flats.json'
 
 const App = () => {
-  // useState to feed the flat's array with the response of the Fetch Api and iterate over it
   const [flats, setFlats] = useState([])
   const [searchText, setSearchText] = useState('')
 
-  // useEffect to Fetch only once (empty dependencies run once)
   useEffect(() => {
     fetch(API_URL)
     .then(response => response.json()
     .then(data => setFlats(data)))
   }, [])
 
-  // useState to define the map viewport and props
   const [viewState, setViewState] = useState({
     latitude: 48.884211,
     longitude: 2.34689,
