@@ -38,16 +38,8 @@
 
   &:hover {
     cursor: pointer;
-    // -webkit-box-shadow: 5px 5px 6px -1px rgba(0,0,0,0.14);
-    // box-shadow: 5px 5px 6px -1px rgba(0,0,0,0.14);
     img {
       opacity: .8;
-    }
-  }
-
-  &.selected {
-    img {
-      opacity: 1;
     }
   }
 }

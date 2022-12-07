@@ -74,11 +74,7 @@ const App = () => {
                 longitude={flat.lng}
                 latitude={flat.lat}>
                   {flat.id === selectedId ? (
-                    <div className="marker-selected">
-                      <img className='marker-selected-image' src={flat.imageUrl} alt="thumb of flat" />
-                      <span className='marker-selected-title'>{flat.name}</span>
-                      <span className='marker-selected-price'>{flat.price}</span>
-                    </div>
+                    <span className="marker selected">€{flat.price}</span>
                   ) : (
                     <span className="marker">€{flat.price}</span>
                   )}
