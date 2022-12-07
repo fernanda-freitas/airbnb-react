@@ -1,23 +1,19 @@
 import './Flat.scss';
 
-import { useState } from 'react';
-
-const Flat = ( {price, name, imageUrl} ) => {
-
-  const [selected, setSelected] = useState(false)
+const Flat = ( {key, price, name, imageUrl, selection} ) => {
 
   const handleClick = () => {
-    setSelected(!selected)
+    selection(key)
   }
 
   return (
-    <div onClick={handleClick} className={selected ? 'flat selected' : 'flat'}>
+    <div onClick={handleClick} className="flat">
       <img src={imageUrl} className="flat-picture" alt="The flat" />
       <div className='flat-title'>
         <span>{name}</span>
       </div>
-      <div  className='flat-price' >
-        <span  className='price'>€ {price}</span>
+      <div className='flat-price'>
+        <span className='price'>€ {price}</span>
         <span>noite</span>
       </div>
     </div>

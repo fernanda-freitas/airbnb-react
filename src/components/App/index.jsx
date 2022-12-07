@@ -30,6 +30,11 @@ const App = () => {
 
   const filteredFlats = flats.filter(flat => flat.name.match(new RegExp(searchText, 'i')))
 
+  const handleFlatSelection = (flatId) => {
+    // Se um segundo elemento com id diferente for selecionado, fazer o unselect
+    console.log(flatId)
+  }
+
   return (
     <div className='app d-flex row'>
       <div className='main col-md-5'>
@@ -37,7 +42,7 @@ const App = () => {
         <Pluralize className='flats-available' singular={'Flat'} count={flats.length} />
         <div className='flats'>
           {filteredFlats.map((flat) => {
-            return <Flat key={flat.id} name={flat.name} price={flat.price} imageUrl={flat.imageUrl} />
+            return <Flat selection={handleFlatSelection} key={flat.id} name={flat.name} price={flat.price} imageUrl={flat.imageUrl} />
           })}
         </div>
       </div>
