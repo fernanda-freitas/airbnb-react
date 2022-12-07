@@ -1,15 +1,20 @@
 .flat {
   flex-basis: calc(50% - 20px);
   margin: 10px;
+  border-radius: 1rem;
 
   .flat-picture {
-    height: 200px;
+    height: 170px;
     width: 100%;
     border-radius: 1rem;
     overflow: hidden;
     object-fit: cover;
     background-size: cover;
     background-position: center;
+  }
+
+  .card-body {
+    padding: 1rem;
   }
 
   .flat-title {
@@ -33,16 +38,16 @@
 
   &:hover {
     cursor: pointer;
-    background-color: #eee;
+    // -webkit-box-shadow: 5px 5px 6px -1px rgba(0,0,0,0.14);
+    // box-shadow: 5px 5px 6px -1px rgba(0,0,0,0.14);
     img {
       opacity: .8;
     }
   }
 
   &.selected {
-    background-color: greenyellow;
     img {
-      opacity: .8;
+      opacity: 1;
     }
   }
 }
