@@ -73,7 +73,14 @@ const App = () => {
                 key={flat.id}
                 longitude={flat.lng}
                 latitude={flat.lat}>
-                <span className="marker">€{flat.price}</span>
+                  {flat.id === selectedId ? (
+                    <div className="marker-selected">
+                      <span>{flat.name}</span>
+                      <span>{flat.price}</span>
+                    </div>
+                  ) : (
+                    <span className="marker">€{flat.price}</span>
+                  )}
               </Marker>
             )
           })}

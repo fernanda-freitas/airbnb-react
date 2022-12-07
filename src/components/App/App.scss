@@ -18,12 +18,10 @@
   z-index: 1000;
   -webkit-box-shadow: 5px 5px 6px -1px rgba(0,0,0,0.14);
   box-shadow: 5px 5px 6px -1px rgba(0,0,0,0.14);
+}
 
-  &.selected {
-    background-color: green;
-    border: rgb(42, 1, 1);
-    color: white;
-  }
+.marker-selected {
+  background-color: white;
 }
 
 .flats-available {
