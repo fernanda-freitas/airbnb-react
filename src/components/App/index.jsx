@@ -31,11 +31,16 @@ const App = () => {
 
   const filteredFlats = flats.filter(flat => flat.name.match(new RegExp(searchText, 'i')))
 
-  const handleFlatSelection = (flatId) => {
+  const handleFlatSelection = (flatId, lat, lng) => {
     setSelectedId(flatId)
     if (flatId === selectedId) {
-      setSelectedId(false)
+      setSelectedId()
     }
+    setViewState({
+      latitude: lat,
+      longitude: lng,
+      zoom: 14
+    })
   }
 
   return (
@@ -46,7 +51,7 @@ const App = () => {
         <div className='flats'>
           {filteredFlats.map((flat) => {
             return <Flat
-                      onSelect={() => handleFlatSelection(flat.id)}
+                      onSelect={() => handleFlatSelection(flat.id, flat.lat, flat.lng)}
                       key={flat.id}
                       name={flat.name}
                       price={flat.price}
