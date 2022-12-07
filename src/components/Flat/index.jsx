@@ -1,13 +1,13 @@
 import './Flat.scss';
 
-const Flat = ( {key, price, name, imageUrl, selection} ) => {
+const Flat = ( {price, name, imageUrl, onSelect, selected} ) => {
 
   const handleClick = () => {
-    selection(key)
+    onSelect()
   }
 
   return (
-    <div onClick={handleClick} className="flat">
+    <div onClick={handleClick} className={selected ? "flat selected" : "flat"}>
       <img src={imageUrl} className="flat-picture" alt="The flat" />
       <div className='flat-title'>
         <span>{name}</span>

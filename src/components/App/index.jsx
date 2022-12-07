@@ -11,6 +11,7 @@ const API_URL = 'https://raw.githubusercontent.com/lewagon/flats-boilerplate/mas
 const App = () => {
   const [flats, setFlats] = useState([])
   const [searchText, setSearchText] = useState('')
+  const [selectedId, setSelectedId] = useState()
 
   useEffect(() => {
     fetch(API_URL)
@@ -30,10 +31,11 @@ const App = () => {
 
   const filteredFlats = flats.filter(flat => flat.name.match(new RegExp(searchText, 'i')))
 
-  const handleFlatSelection = (flatId) => {
-    // Se um segundo elemento com id diferente for selecionado, fazer o unselect
-    console.log(flatId)
-  }
+  // const handleFlatSelection = (flatId) => {
+  //   // Se um segundo elemento com id diferente for selecionado, fazer o unselect
+  //   setSelectedId(flatId)
+  //   console.log(selectedId)
+  // }
 
   return (
     <div className='app d-flex row'>
@@ -42,7 +44,12 @@ const App = () => {
         <Pluralize className='flats-available' singular={'Flat'} count={flats.length} />
         <div className='flats'>
           {filteredFlats.map((flat) => {
-            return <Flat selection={handleFlatSelection} key={flat.id} name={flat.name} price={flat.price} imageUrl={flat.imageUrl} />
+            return <Flat
+                      onSelect={ () => console.log(setSelectedId(flat.id)) }
+                      key={flat.id} name={flat.name}
+                      price={flat.price}
+                      imageUrl={flat.imageUrl}
+                      selected={false} />
           })}
         </div>
       </div>
