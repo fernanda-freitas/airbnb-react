@@ -31,11 +31,12 @@ const App = () => {
 
   const filteredFlats = flats.filter(flat => flat.name.match(new RegExp(searchText, 'i')))
 
-  // const handleFlatSelection = (flatId) => {
-  //   // Se um segundo elemento com id diferente for selecionado, fazer o unselect
-  //   setSelectedId(flatId)
-  //   console.log(selectedId)
-  // }
+  const handleFlatSelection = (flatId) => {
+    setSelectedId(flatId)
+    if (flatId === selectedId) {
+      setSelectedId(false)
+    }
+  }
 
   return (
     <div className='app d-flex row'>
@@ -45,11 +46,12 @@ const App = () => {
         <div className='flats'>
           {filteredFlats.map((flat) => {
             return <Flat
-                      onSelect={ () => console.log(setSelectedId(flat.id)) }
-                      key={flat.id} name={flat.name}
+                      onSelect={() => handleFlatSelection(flat.id)}
+                      key={flat.id}
+                      name={flat.name}
                       price={flat.price}
                       imageUrl={flat.imageUrl}
-                      selected={false} />
+                      selected={flat.id === selectedId} />
           })}
         </div>
       </div>
