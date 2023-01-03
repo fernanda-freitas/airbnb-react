@@ -3,19 +3,16 @@
   margin: 10px;
   border-radius: 1rem;
   padding: 1rem;
+  transition: all .3s;
 
   &:hover {
+    transition: all .3s;
     box-shadow: 0 2px 18px rgb(34 34 34 / 20%);
     cursor: pointer;
   }
 
   &.selected {
     box-shadow: 0 2px 18px rgb(34 34 34 / 20%);
-  }
-
-  &:hover > .flat-picture {
-    transition: all .3s;
-    transform: scale(1.03);
   }
 
   .flat-picture {
@@ -29,6 +26,11 @@
     transition: all .3s;
   }
 
+  &:hover > .flat-picture {
+    transition: all .3s;
+    transform: scale(1.03);
+  }
+
   .card-body {
     padding: 1rem;
   }
@@ -37,7 +39,7 @@
     margin-top: 10px;
 
     span {
-      font-weight: 600;
+      font-weight: 700;
     }
   }
 
