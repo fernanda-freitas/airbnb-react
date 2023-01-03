@@ -2,6 +2,21 @@
   flex-basis: calc(50% - 20px);
   margin: 10px;
   border-radius: 1rem;
+  padding: 1rem;
+
+  &:hover {
+    box-shadow: 0 2px 18px rgb(34 34 34 / 20%);
+    cursor: pointer;
+  }
+
+  &.selected {
+    box-shadow: 0 2px 18px rgb(34 34 34 / 20%);
+  }
+
+  &:hover > .flat-picture {
+    transition: all .3s;
+    transform: scale(1.03);
+  }
 
   .flat-picture {
     height: 250px;
@@ -11,6 +26,7 @@
     object-fit: cover;
     background-size: cover;
     background-position: center;
+    transition: all .3s;
   }
 
   .card-body {
@@ -33,13 +49,6 @@
     .price {
       font-weight: 600;
       margin-right: .3rem;
-    }
-  }
-
-  &:hover {
-    cursor: pointer;
-    img {
-      opacity: .7;
     }
   }
 }
