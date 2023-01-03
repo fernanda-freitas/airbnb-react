@@ -12,6 +12,7 @@ const App = () => {
   const [flats, setFlats] = useState([])
   const [searchText, setSearchText] = useState('')
   const [selectedId, setSelectedId] = useState()
+  const [markerSelectId, setMarkerSelectId] = useState(false)
 
   useEffect(() => {
     fetch(API_URL)
@@ -32,6 +33,7 @@ const App = () => {
   const filteredFlats = flats.filter(flat => flat.name.match(new RegExp(searchText, 'i')))
 
   const handleFlatSelection = (flatId, lat, lng) => {
+    setMarkerSelectId()
     setSelectedId(flatId)
     if (flatId === selectedId) {
       setSelectedId()
@@ -41,6 +43,11 @@ const App = () => {
       longitude: lng,
       zoom: 14
     })
+  }
+
+  const handleMarkSelection = (markerId) => {
+    setSelectedId()
+    setMarkerSelectId(markerId)
   }
 
   return (
@@ -72,12 +79,10 @@ const App = () => {
               <Marker
                 key={flat.id}
                 longitude={flat.lng}
-                latitude={flat.lat}>
-                  {flat.id === selectedId ? (
-                    <span className="marker selected">€{flat.price}</span>
-                  ) : (
-                    <span className="marker">€{flat.price}</span>
-                  )}
+                latitude={flat.lat}
+                onClick={() => {handleMarkSelection(flat.id)}}
+                >
+                  <span className={flat.id === selectedId || flat.id === markerSelectId ? 'marker selected' : 'marker'}>€{flat.price}</span>
               </Marker>
             )
           })}
