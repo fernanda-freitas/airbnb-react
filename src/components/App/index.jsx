@@ -63,7 +63,7 @@ const App = () => {
                       name={flat.name}
                       price={flat.price}
                       imageUrl={flat.imageUrl}
-                      selected={flat.id === selectedId} />
+                      selected={flat.id === selectedId || flat.id === markerSelectId} />
           })}
         </div>
       </div>
